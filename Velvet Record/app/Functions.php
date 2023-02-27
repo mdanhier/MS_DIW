@@ -27,19 +27,13 @@ function nav(string $currentPageName)
                     <div class="collapse navbar-collapse" id="navBarToggleItems">
                         <div class="navbar-nav">
                         <a class="ms-auto navbar-brand" href="./">Velvet Record</a>
+                        <li class="nav-item">';
+    if ($currentPageName == 'discIndex')
+        echo '<a class="nav-link active" href="./discs">Disques</a>';
+    else
+        echo '<a class="nav-link" href="./discs">Disques</a>';
+    echo '</li>
                     </div>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Disques
-                                </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="./discs">Liste</a></li>
-                            </ul>
-                            </li>
-                        </ul>
-                        </div>
                 </div>
             </nav>
         </header>';
