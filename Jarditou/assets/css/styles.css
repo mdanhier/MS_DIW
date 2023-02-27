@@ -1,0 +1,134 @@
+html {
+    font-size: 1rem;
+}
+
+html,
+body,
+#container {
+    height: 100%;
+}
+
+footer {
+    position: sticky;
+    top: 100vh;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+#logo {
+    height: 50px;
+}
+
+.nav-margin {
+    margin-top: 100px;
+}
+
+#banner {
+    width: max-content;
+    text-align: center;
+}
+
+figure {
+    margin-bottom: 30px;
+}
+
+
+figcaption {
+    font: italic smaller sans-serif;
+    padding: 3px;
+    text-align: center;
+}
+
+table th,
+table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+table img {
+    height: 96px;
+}
+
+fieldset:not(:first-child) {
+    margin-top: 48px;
+}
+
+#topic {
+    width: 100%;
+}
+
+#request {
+    width: 100%;
+    height: auto;
+}
+
+.tooltippopper {
+    background: #DC3545;
+    color: white;
+    font-weight: bold;
+    padding: 4px 8px;
+    font-size: 16px;
+    border-radius: 6px;
+    z-index: 1;
+    transition: display ease .5s;
+}
+
+.arrowpopper,
+.arrowpopper::before {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: inherit;
+}
+
+.arrowpopper {
+    visibility: hidden;
+}
+
+.arrowpopper::before {
+    visibility: visible;
+    content: '';
+    transform: rotate(45deg);
+}
+
+.tooltippopper[data-popper-placement^='top']>.arrowpopper {
+    bottom: -4px;
+}
+
+.tooltippopper[data-popper-placement^='bottom']>.arrowpopper {
+    top: -4px;
+}
+
+.tooltippopper[data-popper-placement^='left']>.arrowpopper {
+    right: -4px;
+}
+
+.tooltippopper[data-popper-placement^='right']>.arrowpopper {
+    left: -4px;
+}
+
+@media (max-width: 576px) {
+    html {
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 576px) {
+    html {
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    html {
+        font-size: 1.2rem;
+    }
+}
