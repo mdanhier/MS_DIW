@@ -4,7 +4,6 @@ abstract class Model
     protected $connexion;
 
     public $table;
-    public $id;
 
     public function getConnection()
     {
@@ -16,13 +15,5 @@ abstract class Model
         } catch (PDOException $exception) {
             echo "Erreur de connexion : " . $exception->getMessage();
         }
-    }
-
-    public function getAll()
-    {
-        $sql   = "SELECT * FROM " . $this->table;
-        $query = $this->connexion->prepare($sql);
-        $query->execute();
-        return $query->fetchAll();
     }
 }

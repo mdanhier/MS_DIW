@@ -8,7 +8,7 @@ function head(string $currentPageName)
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="./assets/css/styles.css">
+        <link rel="stylesheet" href="' . ASSETS . '/css/styles.css">
         <title>' . $currentPageName . '</title>
     </head>
     <body>';
@@ -17,7 +17,7 @@ function head(string $currentPageName)
 function nav(string $currentPageName)
 {
     echo '<header>
-            <nav class="navbar navbar-dark navbar-expand-lg bg-danger py-3">
+            <nav class="navbar navbar-dark navbar-expand-lg bg-velvet5 py-3">
                 <div class="container-fluid mx-5">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navBarToggleItems" aria-controls="navBarToggleItems" aria-expanded="false"
@@ -26,12 +26,12 @@ function nav(string $currentPageName)
                     </button>
                     <div class="collapse navbar-collapse" id="navBarToggleItems">
                         <div class="navbar-nav">
-                        <a class="ms-auto navbar-brand" href="./">Velvet Record</a>
+                        <a class="ms-auto navbar-brand" href="' . HTMLROOT . '">Velvet Record</a>
                         <li class="nav-item">';
     if ($currentPageName == 'discIndex')
-        echo '<a class="nav-link active" href="./discs">Disques</a>';
+        echo '<a class="nav-link active" href="' . HTMLROOT . '/discs">Disques</a>';
     else
-        echo '<a class="nav-link" href="./discs">Disques</a>';
+        echo '<a class="nav-link" href="' . HTMLROOT . '/discs">Disques</a>';
     echo '</li>
                     </div>
                 </div>
@@ -43,7 +43,7 @@ function foot()
 {
     echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/js/scripts.js"></script>
+    <script src=""' . ASSETS . '/js/scripts.js"></script>
     </body>
     </html>';
 }
