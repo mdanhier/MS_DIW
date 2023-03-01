@@ -7,7 +7,6 @@ class Disc extends Model
         $this->table = "disc";
         $this->getConnection();
     }
-
     public function getAll()
     {
         $sql   = "SELECT * FROM " . $this->table . " INNER JOIN artist ON (disc.artist_id=artist.artist_id)";

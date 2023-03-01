@@ -3,7 +3,7 @@ head('Disques - Accueil');
 nav('discIndex');
 ?>
 <div class="container disclist">
-    <div class="row row-cols-lg-4 row-cols-sm-2">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4">
         <?php foreach ($discs as $disc) : ?>
             <div class="col my-3">
                 <div class="card">
@@ -11,7 +11,10 @@ nav('discIndex');
                         <p class="h5 card-title"><?= $disc['disc_title'] ?></p>
                         <a class="card-text link-velvet5" href="<?= $disc['artist_url'] ?>"><?= $disc['artist_name'] ?></a>
                     </div>
-                    <img class="cover bg-velvet5" src="<?= ASSETS . '/img/' . $disc['disc_picture'] ?>" alt="<?= $disc['disc_picture'] ?>">
+                    <div class="cover-block bg-transparent">
+                        <img class="cover-overlay z-1" style="--imglink: url('<?= ASSETS . '/img/' . $disc['disc_picture'] ?>')" src="<?= ASSETS . '/img/template/disc overlay.png' ?>">
+                        <img class="cover z-0" src="<?= ASSETS . '/img/' . $disc['disc_picture'] ?>" alt="Jaquette <?= $disc['disc_picture'] ?>">
+                    </div>
                     <ul class="list-group list-group-flush">
                         <li class="bg-velvet2 list-group-item">Année: <?= $disc['disc_year'] ?></li>
                         <li class="bg-velvet2 list-group-item">Label: <?= $disc['disc_label'] ?></li>

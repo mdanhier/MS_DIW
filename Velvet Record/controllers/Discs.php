@@ -10,7 +10,9 @@ class Discs extends Controller
     public function id(int $id)
     {
         $this->loadModel('Disc');
+        $this->loadModel('Artist');
         $disc = $this->Disc->getById($id);
-        $this->render('id', compact('disc'));
+        $artists = $this->Artist->getAll();
+        $this->render('id', [compact('disc'), compact('artists')]);
     }
 }
