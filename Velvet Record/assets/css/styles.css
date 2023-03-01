@@ -103,13 +103,6 @@
     color: rgba(99, 31, 58);
 }
 
-/* .casetemplate {
-    background-image: var(--imglink);
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    mix-blend-mode: multiply;
-} */
 .cover-block{
     position: relative;
     top: 0;
@@ -126,12 +119,8 @@
     border-radius: 0.325rem;
     clip-path: circle(49%);
     animation: spin 30s linear infinite backwards;
-    animation-play-state: paused
-}
-
-@keyframes spin {
-    from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}
+    animation-play-state: paused;
+    filter:blur(1.5px);
 }
 
 .cover-overlay {
@@ -143,5 +132,11 @@
     border-radius: 0.325rem;
 }
 .cover-overlay:hover + .cover{
-    animation-play-state: running
+    animation-play-state: running;
+    filter:none;
+}
+
+@keyframes spin {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
 }
