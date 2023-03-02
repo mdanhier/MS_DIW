@@ -2,9 +2,6 @@
 define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
 define('HTMLROOT', dirname(($_SERVER['SCRIPT_NAME'])));
 define('ASSETS', HTMLROOT . '/assets');
-require_once(ROOT . 'app/Config.php');
-require_once(ROOT . 'app/Functions.php');
-require_once(ROOT . 'app/Model.php');
 require_once(ROOT . 'app/Controller.php');
 $params = explode('/', $_GET['p']);
 if ($params[0] != "") {

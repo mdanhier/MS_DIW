@@ -1,142 +1,158 @@
 .bg-velvet1 {
-    background-color: rgb(223, 175, 180);
+  background-color: rgb(223, 175, 180);
 }
 
 .text-velvet1 {
-    color: rgb(223, 175, 180);
+  color: rgb(223, 175, 180);
 }
 
 .btn-velvet1 {
-    background-color: rgb(223, 175, 180);
+  background-color: rgb(223, 175, 180);
 }
 
 .link-velvet1 {
-    color: rgba(223, 175, 180, 0.8);
+  color: rgba(223, 175, 180, 0.8);
 }
 
 .link-velvet1:hover,
 .link-velvet1:focus {
-    color: rgb(223, 175, 180);
+  color: rgb(223, 175, 180);
 }
 
 .bg-velvet2 {
-    background-color: rgb(242, 211, 204);
+  background-color: rgb(242, 211, 204);
 }
 
 .text-velvet2 {
-    color: rgb(242, 211, 204);
+  color: rgb(242, 211, 204);
 }
 
 .btn-velvet2 {
-    background-color: rgb(242, 211, 204);
+  background-color: rgb(242, 211, 204);
 }
 
 .link-velvet2 {
-    color: rgba(242, 211, 204, 0.8);
+  color: rgba(242, 211, 204, 0.8);
 }
 
 .link-velvet2:hover,
 .link-velvet2:focus {
-    color: rgb(242, 211, 204);
+  color: rgb(242, 211, 204);
 }
 
 .bg-velvet3 {
-    background-color: rgb(201, 150, 141);
+  background-color: rgb(201, 150, 141);
 }
 
 .text-velvet3 {
-    color: rgb(201, 150, 141);
+  color: rgb(201, 150, 141);
 }
 
 .btn-velvet3 {
-    background-color: rgb(201, 150, 141);
+  background-color: rgb(201, 150, 141);
 }
 
 .link-velvet3 {
-    color: rgba(201, 150, 141, 0.8);
+  color: rgba(201, 150, 141, 0.8);
 }
 
 .link-velvet3:hover,
 .link-velvet3:focus {
-    color: rgb(201, 150, 141);
+  color: rgb(201, 150, 141);
 }
 
 .bg-velvet4 {
-    background-color: rgb(163, 80, 97);
+  background-color: rgb(163, 80, 97);
 }
 
 .text-velvet4 {
-    color: rgb(163, 80, 97);
+  color: rgb(163, 80, 97);
 }
 
 .btn-velvet4 {
-    background-color: rgb(163, 80, 97);
+  background-color: rgb(163, 80, 97);
 }
 
 .link-velvet4 {
-    color: rgba(163, 80, 97, 0.8);
+  color: rgba(163, 80, 97, 0.8);
 }
 
 .link-velvet4:hover,
 .link-velvet4:focus {
-    color: rgb(163, 80, 97);
+  color: rgb(163, 80, 97);
 }
 
 .bg-velvet5 {
-    background-color: rgb(99, 31, 58);
+  background-color: rgb(99, 31, 58);
 }
 
 .text-velvet5 {
-    color: rgb(99, 31, 58);
+  color: rgb(99, 31, 58);
 }
 
 .btn-velvet5 {
-    background-color: rgb(99, 31, 58);
+  background-color: rgb(99, 31, 58);
 }
 
 .link-velvet5 {
-    color: rgba(99, 31, 58, 0.8);
+  color: rgba(99, 31, 58, 0.8);
 }
 
 .link-velvet5:hover,
 .link-velvet5:focus {
-    color: rgba(99, 31, 58);
+  color: rgba(99, 31, 58);
 }
 
-.cover-block{
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    aspect-ratio: 1/1;
+.cover-block {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: rgb(99, 31, 58);
+  box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 1);
 }
-.cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 0.325rem;
-    clip-path: circle(49%);
-    animation: spin 30s linear infinite backwards;
-    animation-play-state: paused;
-    filter:blur(1.5px);
+
+.cover-in-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: circle(49.9%);
+  filter: blur(0px);
+  transition: filter 0.2s ease-in-out;
+  animation: spin 30s linear infinite backwards;
+  animation-play-state: paused;
+}
+
+.cover-out-list {
+  width: 100%;
+  height: 100%;
 }
 
 .cover-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 0.325rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
-.cover-overlay:hover + .cover{
-    animation-play-state: running;
-    filter:none;
+
+.cover-overlay:active {
+  pointer-events: none;
+}
+
+.cover-overlay:hover + .cover-in-list {
+  animation-play-state: running;
+  filter: blur(1px);
 }
 
 @keyframes spin {
-    from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
