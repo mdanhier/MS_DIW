@@ -1,9 +1,9 @@
 <?php
 require("functions.php");
 
-function showData($datasArr)
+function showData($dataArr)
 {
-    return json_encode($datasArr, JSON_PRETTY_PRINT);
+    return json_encode($dataArr, JSON_PRETTY_PRINT);
 }
 
 head("exercice5");

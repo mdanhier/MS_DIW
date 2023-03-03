@@ -17,12 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         while ($artistRow = $artistSql->fetch(PDO::FETCH_ASSOC)) {
             extract($artistRow);
             $discSql = $disc->readAllByArtistId($artist_id);
-            $discDatas = $discSql->fetchAll(PDO::FETCH_ASSOC);
+            $discData = $discSql->fetchAll(PDO::FETCH_ASSOC);
             $artist = [
                 "artist_id" => $artist_id,
                 "artist_name" => $artist_name,
                 "artist_url" => $artist_url,
-                "discs" => $discDatas,
+                "discs" => $discData,
             ];
             $arrayArtists['artists'][] = $artist;
         }

@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $row = $discSql->fetch(PDO::FETCH_ASSOC);
             extract($row);
             $artistSql = $artist->readOne($artist_id);
-            $artistDatas = $artistSql->fetch(PDO::FETCH_ASSOC);
+            $artistData = $artistSql->fetch(PDO::FETCH_ASSOC);
             $disc = [
                 "disc_id" => $disc_id,
                 "disc_title" => $disc_title,
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 "disc_label" => $disc_label,
                 "disc_genre" => $disc_genre,
                 "disc_price" => $disc_price,
-                "artist" => $artistDatas,
+                "artist" => $artistData,
             ];
             $arrayDiscs['discs'] = $disc;
             http_response_code(200);

@@ -12,8 +12,7 @@ nav("exercice6");
                 <?php
                 foreach (file("assets/misc/liens.txt") as $line) {
                     echo "<p class='h4'><a href='" . $line . "'>" . $line . "</a></p>";
-                }
-                ;
+                };
                 ?>
             </div>
         </div>
@@ -26,8 +25,8 @@ nav("exercice6");
                 <table class='table table-bordered table-striped table-hover'>
                     <?php
                     $i        = 0;
-                    $csvDatas = file("https://raw.githubusercontent.com/neo4j-contrib/northwind-neo4j/master/data/customers.csv");
-                    foreach ($csvDatas as $el) {
+                    $csvData = file("https://raw.githubusercontent.com/neo4j-contrib/northwind-neo4j/master/data/customers.csv");
+                    foreach ($csvData as $el) {
                         $elArr = explode(",", $el);
                         if ($i == 0)
                             echo "<thead class='table-primary'>";
@@ -40,7 +39,7 @@ nav("exercice6");
                         echo "</tr>";
                         if ($i == 0)
                             echo "</thead>";
-                        if ($i == count($csvDatas))
+                        if ($i == count($csvData))
                             echo "</tbody>";
                         $i++;
                     }

@@ -38,9 +38,9 @@ class Discs
     }
     public function edit()
     {
-        $sql = "UPDATE " . $this->table . " SET disc_title = :disc_title, disc_year = :disc_year, disc_picture = :disc_picture, disc_label = :disc_label, disc_genre = :disc_genre, disc_price = :disc_price, artist_id = :artist_id WHERE id = :id";
+        $sql = "UPDATE " . $this->table . " SET disc_title = :disc_title, disc_year = :disc_year, disc_picture = :disc_picture, disc_label = :disc_label, disc_genre = :disc_genre, disc_price = :disc_price, artist_id = :artist_id WHERE disc_id = :disc_id";
         $query = $this->connexion->prepare($sql);
-        $this->id = htmlspecialchars(strip_tags($this->id));
+        $this->disc_id = htmlspecialchars(strip_tags($this->disc_id));
         $this->disc_title = htmlspecialchars(strip_tags($this->disc_title));
         $this->disc_year = htmlspecialchars(strip_tags($this->disc_year));
         $this->disc_picture = htmlspecialchars(strip_tags($this->disc_picture));
@@ -55,7 +55,7 @@ class Discs
         $query->bindParam(':disc_genre', $this->disc_genre);
         $query->bindParam(':disc_price', $this->disc_price);
         $query->bindParam(':artist_id', $this->artist_id);
-        $query->bindParam(':id', $this->id);
+        $query->bindParam(':disc_id', $this->disc_id);
         if ($query->execute()) {
             return true;
         }

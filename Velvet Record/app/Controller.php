@@ -1,16 +1,16 @@
 <?php
 abstract class Controller
 {
-    public function render(string $file, string $pageTitle, array $datas = [])
+    public function render(string $file, string $pageTitle, array $data = [])
     {
-        if (count($datas) > 1) {
-            foreach ($datas as $data) {
-                extract($data);
+        if (count($data) > 1) {
+            foreach ($data as $dataOne) {
+                extract($dataOne);
             }
-            unset($data);
+            unset($dataOne);
         } else
-            extract($datas);
-        unset($datas);
+            extract($data);
+        unset($data);
         ob_start();
         require_once(ROOT . 'views/' . (get_class($this)) . '/' . $file . '.php');
         $content = ob_get_clean();

@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         while ($row = $discSql->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
             $artistSql = $artist->readOne($artist_id);
-            $artistDatas = $artistSql->fetch(PDO::FETCH_ASSOC);
+            $artistData = $artistSql->fetch(PDO::FETCH_ASSOC);
             $disc = [
                 "disc_id" => $disc_id,
                 "disc_title" => $disc_title,
@@ -26,16 +26,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 "disc_label" => $disc_label,
                 "disc_genre" => $disc_genre,
                 "disc_price" => $disc_price,
-                "artist" => $artistDatas,
+                "artist" => $artistData,
             ];
             $arrayDiscs['discs'][] = $disc;
         }
         http_response_code(200);
         echo json_encode($arrayDiscs);
     } else {
-        echo json_encode(["error" => "Aucune donnée dans la table."]);
+        echo json_encode(["message" => "Aucune donnée dans la table."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
 } else {
     http_response_code(405);
-    echo json_encode(["error" => "Accès non autorisé."]);
+    echo json_encode(["error" => "Accès non autorisé."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 }
