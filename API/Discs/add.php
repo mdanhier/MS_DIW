@@ -21,15 +21,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $disc->artist_id = $data->artistid;
         if ($disc->add()) {
             http_response_code(200);
-            echo json_encode(["message" => "L'ajout a été effectué."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            echo json_encode(["Succès" => "L'ajout a été effectué."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         } else {
             http_response_code(503);
-            echo json_encode(["message" => "L'ajout n'a pas été effectué."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            echo json_encode(["Erreur" => "L'ajout n'a pas été effectué."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         }
     } else {
-        echo json_encode(["error" => "Paramètre manquant."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        echo json_encode(["Erreur" => "Paramètre manquant."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
 } else {
     http_response_code(405);
-    echo json_encode(["error" => "Accès non autorisé."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    echo json_encode(["Erreur" => "Accès non autorisé."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 }

@@ -33,9 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         http_response_code(200);
         echo json_encode($arrayDiscs);
     } else {
-        echo json_encode(["message" => "Aucune donnée dans la table."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        echo json_encode(["Erreur" => "Aucune donnée dans la table."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
 } else {
     http_response_code(405);
-    echo json_encode(["error" => "Accès non autorisé."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    echo json_encode(["Erreur" => "Accès non autorisé."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 }

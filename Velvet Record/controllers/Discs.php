@@ -16,7 +16,7 @@ class Discs extends Controller
         $discs = json_decode($responseDiscsReadAll, true);
         $this->render('index', 'Disques', $discs);
     }
-    public function about(int $id)
+    public function about($id)
     {
         if (isset($_POST['alterdisc'])) {
             if ($_POST['alterdisc'] == 'edit') {
@@ -64,8 +64,8 @@ class Discs extends Controller
         $responseDiscReadOne = curl_exec($curlDiscReadOne);
         curl_close($curlDiscReadOne);
         $disc = json_decode($responseDiscReadOne, true);
-        if (isset($disc['error'])) {
-            echo $disc['error'];
+        if (isset($disc['Erreur'])) {
+            echo $disc['Erreur'];
             return;
         } else {
             $curlArtistsReadAll = curl_init();
