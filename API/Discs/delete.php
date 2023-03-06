@@ -11,21 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $db = $database->getConnection();
     $disc = new Discs($db);
     $data = json_decode(file_get_contents("php://input"));
-    if (!empty($data->discid) && !empty($data->disctitle) && !empty($data->discyear) && !empty($data->discpicture) && !empty($data->disclabel) && !empty($data->discgenre) && !empty($data->discprice) && !empty($data->artistid)) {
+    if (!empty($data->discid)) {
         $disc->disc_id = $data->discid;
-        $disc->disc_title = $data->disctitle;
-        $disc->disc_year = $data->discyear;
-        $disc->disc_picture = $data->discpicture;
-        $disc->disc_label = $data->disclabel;
-        $disc->disc_genre = $data->discgenre;
-        $disc->disc_price = $data->discprice;
-        $disc->artist_id = $data->artistid;
-        if ($disc->edit()) {
+        if ($disc->delete()) {
             http_response_code(200);
-            echo json_encode(["message" => "La modification a été effectuée."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            echo json_encode(["message" => "La suppression a été effectuée."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         } else {
             http_response_code(503);
-            echo json_encode(["message" => "La modification n'a pas été effectuée."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            echo json_encode(["message" => "La suppression n'a pas été effectuée."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         }
     } else {
         echo json_encode(["error" => "Paramètre manquant."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);

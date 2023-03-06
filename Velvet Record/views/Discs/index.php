@@ -17,7 +17,7 @@
                         <li class="bg-velvet2 list-group-item">Prix: <?= $disc['disc_price'] ?>€</li>
                     </ul>
                     <div class="card-footer bg-velvet">
-                        <a href="<?= HTMLROOT . '/discs/onedisc/' . $disc['disc_id'] ?>" class="link-velvet5">ID:
+                        <a href="<?= HTMLROOT . '/discs/about/' . $disc['disc_id'] ?>" class="link-velvet5">ID:
                             <?= $disc['disc_id'] ?></a>
                     </div>
                 </div>

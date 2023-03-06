@@ -1,1 +1,1 @@
-yes
+Page d'accueil à compléter

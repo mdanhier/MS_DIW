@@ -11,8 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $db = $database->getConnection();
     $disc = new Discs($db);
     $data = json_decode(file_get_contents("php://input"));
-    if (!empty($data->discid) && !empty($data->disctitle) && !empty($data->discyear) && !empty($data->discpicture) && !empty($data->disclabel) && !empty($data->discgenre) && !empty($data->discprice) && !empty($data->artistid)) {
-        $disc->disc_id = $data->discid;
+    if (!empty($data->disctitle) && !empty($data->discyear) && !empty($data->discpicture) && !empty($data->disclabel) && !empty($data->discgenre) && !empty($data->discprice) && !empty($data->artistid)) {
         $disc->disc_title = $data->disctitle;
         $disc->disc_year = $data->discyear;
         $disc->disc_picture = $data->discpicture;
@@ -20,12 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $disc->disc_genre = $data->discgenre;
         $disc->disc_price = $data->discprice;
         $disc->artist_id = $data->artistid;
-        if ($disc->edit()) {
+        if ($disc->add()) {
             http_response_code(200);
-            echo json_encode(["message" => "La modification a été effectuée."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            echo json_encode(["message" => "L'ajout a été effectué."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         } else {
             http_response_code(503);
-            echo json_encode(["message" => "La modification n'a pas été effectuée."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            echo json_encode(["message" => "L'ajout n'a pas été effectué."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         }
     } else {
         echo json_encode(["error" => "Paramètre manquant."], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);

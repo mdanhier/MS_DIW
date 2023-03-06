@@ -16,10 +16,13 @@ class Discs extends Controller
         $discs = json_decode($responseDiscsReadAll, true);
         $this->render('index', 'Disques', $discs);
     }
-    public function onedisc(int $id)
+    public function about(int $id)
     {
         if (isset($_POST['alterdisc'])) {
             if ($_POST['alterdisc'] == 'edit') {
+                if (!isset($_POST['disceditpicture'])) {
+                    $_POST['discpicture'] = $_POST['origdiscpicture'];
+                }
                 $data = json_encode($_POST);
                 $curlDiscEdit = curl_init();
                 curl_setopt_array($curlDiscEdit, array(
@@ -33,11 +36,21 @@ class Discs extends Controller
                 ));
                 $responseDiscEdit = curl_exec($curlDiscEdit);
                 curl_close($curlDiscEdit);
-                print_r($responseDiscEdit);
-                print_r(curl_error($curlDiscEdit));
-                print_r($data);
             } elseif ($_POST['alterdisc'] == 'delete') {
-                print_r($_POST);
+                $data = json_encode($_POST);
+                $curlDiscDelete = curl_init();
+                curl_setopt_array($curlDiscDelete, array(
+                    CURLOPT_URL => "http://127.0.0.1/API/Discs/delete.php",
+                    CURLOPT_POST => true,
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_HTTPHEADER => array(
+                        "Content-Type: application/json",
+                    ),
+                    CURLOPT_POSTFIELDS => $data,
+                ));
+                $responseDiscDelete = curl_exec($curlDiscDelete);
+                curl_close($curlDiscDelete);
+                header('Location: ' . HTMLROOT . '/discs');
             }
         }
         $curlDiscReadOne = curl_init();
@@ -51,6 +64,42 @@ class Discs extends Controller
         $responseDiscReadOne = curl_exec($curlDiscReadOne);
         curl_close($curlDiscReadOne);
         $disc = json_decode($responseDiscReadOne, true);
+        if (isset($disc['error'])) {
+            echo $disc['error'];
+            return;
+        } else {
+            $curlArtistsReadAll = curl_init();
+            curl_setopt_array($curlArtistsReadAll, array(
+                CURLOPT_URL => "http://127.0.0.1/API/Artists/readall.php",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_HTTPHEADER => array(
+                    "cache-control: no-cache"
+                ),
+            ));
+            $responseArtistsReadAll = curl_exec($curlArtistsReadAll);
+            curl_close($curlArtistsReadAll);
+            $artists = json_decode($responseArtistsReadAll, true);
+            $this->render('about', ($disc['discs']['disc_title'] . ' - ' . $disc['discs']['artist']['artist_name']), [$disc, $artists]);
+        }
+    }
+    public function add()
+    {
+        if (isset($_POST['adddisc'])) {
+            $_POST['discprice'] = str_replace(',', '.', $_POST['discprice']);
+            $data = json_encode($_POST);
+            $curlDiscEdit = curl_init();
+            curl_setopt_array($curlDiscEdit, array(
+                CURLOPT_URL => "http://127.0.0.1/API/Discs/add.php",
+                CURLOPT_POST => true,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_HTTPHEADER => array(
+                    "Content-Type: application/json",
+                ),
+                CURLOPT_POSTFIELDS => $data,
+            ));
+            $responseDiscEdit = curl_exec($curlDiscEdit);
+            curl_close($curlDiscEdit);
+        }
         $curlArtistsReadAll = curl_init();
         curl_setopt_array($curlArtistsReadAll, array(
             CURLOPT_URL => "http://127.0.0.1/API/Artists/readall.php",
@@ -62,6 +111,6 @@ class Discs extends Controller
         $responseArtistsReadAll = curl_exec($curlArtistsReadAll);
         curl_close($curlArtistsReadAll);
         $artists = json_decode($responseArtistsReadAll, true);
-        $this->render('onedisc', ($disc['discs']['disc_title'] . ' - ' . $disc['discs']['artist']['artist_name']), [$disc, $artists]);
+        $this->render('add', ('Ajouter un disque'), $artists);
     }
 }

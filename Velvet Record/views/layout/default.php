@@ -33,12 +33,26 @@
                             endif;
                             ?>
                         </li>
+                        <li class="nav-item">
+                            <?php
+                            if ($pageTitle == 'Ajouter un disque') :
+                            ?>
+                                <a class="nav-link active" href="<?= HTMLROOT . '/discs/add' ?>">Ajouter un disque</a>
+                            <?php
+                            else :
+                            ?>
+                                <a class="nav-link" href="<?= HTMLROOT . '/discs/add' ?>">Ajouter un disque</a>
+                            <?php
+                            endif;
+                            ?>
+                        </li>
                     </div>
                 </div>
         </nav>
     </header>
     <?= $content ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
     <script src="<?= ASSETS . '/js/scripts.js' ?>"></script>
 </body>
 
