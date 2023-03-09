@@ -20,8 +20,12 @@ class Discs extends Controller
     {
         if (isset($_POST['alterdisc'])) {
             if ($_POST['alterdisc'] == 'edit') {
-                if (!isset($_POST['disceditpicture'])) {
+                $_POST['discprice'] = str_replace(',', '.', $_POST['discprice']);
+                if ($_FILES['filepicture']['error'] == UPLOAD_ERR_NO_FILE) {
                     $_POST['discpicture'] = $_POST['origdiscpicture'];
+                } else {
+                    $_POST['discpicture'] = $_FILES['filepicture']['name'];
+                    uploadImage($_FILES['filepicture']);
                 }
                 $data = json_encode($_POST);
                 $curlDiscEdit = curl_init();
@@ -86,19 +90,23 @@ class Discs extends Controller
     {
         if (isset($_POST['adddisc'])) {
             $_POST['discprice'] = str_replace(',', '.', $_POST['discprice']);
-            $data = json_encode($_POST);
-            $curlDiscEdit = curl_init();
-            curl_setopt_array($curlDiscEdit, array(
-                CURLOPT_URL => "http://127.0.0.1/API/Discs/add.php",
-                CURLOPT_POST => true,
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_HTTPHEADER => array(
-                    "Content-Type: application/json",
-                ),
-                CURLOPT_POSTFIELDS => $data,
-            ));
-            $responseDiscEdit = curl_exec($curlDiscEdit);
-            curl_close($curlDiscEdit);
+            if (!$_FILES['filepicture']['error'] == UPLOAD_ERR_NO_FILE) {
+                $_POST['discpicture'] = $_FILES['filepicture']['name'];
+                uploadImage($_FILES['filepicture']);
+                $data = json_encode($_POST);
+                $curlDiscEdit = curl_init();
+                curl_setopt_array($curlDiscEdit, array(
+                    CURLOPT_URL => "http://127.0.0.1/API/Discs/add.php",
+                    CURLOPT_POST => true,
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_HTTPHEADER => array(
+                        "Content-Type: application/json",
+                    ),
+                    CURLOPT_POSTFIELDS => $data,
+                ));
+                $responseDiscEdit = curl_exec($curlDiscEdit);
+                curl_close($curlDiscEdit);
+            }
         }
         $curlArtistsReadAll = curl_init();
         curl_setopt_array($curlArtistsReadAll, array(

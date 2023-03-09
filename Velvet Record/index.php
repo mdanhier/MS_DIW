@@ -3,6 +3,7 @@ define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
 define('HTMLROOT', dirname(($_SERVER['SCRIPT_NAME'])));
 define('ASSETS', HTMLROOT . '/assets');
 require_once(ROOT . 'app/Controller.php');
+require_once(ROOT . 'app/Functions.php');
 $params = explode('/', $_GET['p']);
 if ($params[0] != "") {
     $controller = ucfirst($params[0]);

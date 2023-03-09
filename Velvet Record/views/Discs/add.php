@@ -4,17 +4,17 @@
             <div class="card border border-0">
                 <div class="row g-0 justify-content-center">
                     <div class="col-12 card-body">
-                        <form id="discform" method="POST" class="px-2 d-flex flex-column justify-content-between h-100">
+                        <form id="discform" method="POST" enctype="multipart/form-data" class="px-2 d-flex flex-column justify-content-between h-100">
                             <div class="row">
                                 <label for="disctitle" class="d-inline-block col-12 col-lg-2 col-form-label col-form-label-lg">Titre</label>
                                 <div class="col-12 col-lg-10">
-                                    <input name="disctitle" id="disctitle" class="form-control form-control-lg" type="text">
+                                    <input name="disctitle" id="disctitle" class="form-control form-control-lg" type="text" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <label for="artistid" class="d-inline-block col-12 col-lg-2 col-form-label col-form-label-lg">Artiste</label>
                                 <div class="col-12 col-lg-10">
-                                    <select name="artistid" id="artistid" class="form-select form-select-lg">
+                                    <select name="artistid" id="artistid" class="form-select form-select-lg" required>
                                         <?php foreach ($artists as $artist) :
                                             if ($artist['artist_id'] == $discs['artist']['artist_id']) : ?>
                                                 <option value="<?= $artist['artist_id'] ?>" selected>
@@ -30,31 +30,32 @@
                             <div class="row">
                                 <label for="discyear" class="d-inline-block col-12 col-lg-2 col-form-label col-form-label-lg">Année</label>
                                 <div class="col-12 col-lg-10">
-                                    <input name="discyear" id="discyear" class="form-control form-control-lg" type="text">
+                                    <input name="discyear" id="discyear" class="form-control form-control-lg" type="text" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <label for="disclabel" class="d-inline-block col-12 col-lg-2 col-form-label col-form-label-lg">Label</label>
                                 <div class="col-12 col-lg-10">
-                                    <input name="disclabel" id="disclabel" class="form-control form-control-lg" type="text">
+                                    <input name="disclabel" id="disclabel" class="form-control form-control-lg" type="text" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <label for="discgenre" class="d-inline-block col-12 col-lg-2 col-form-label col-form-label-lg">Genre</label>
                                 <div class="col-12 col-lg-10">
-                                    <input name="discgenre" id="discgenre" class="form-control form-control-lg" type="text">
+                                    <input name="discgenre" id="discgenre" class="form-control form-control-lg" type="text" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <label for="discprice" class="d-inline-block col-12 col-lg-2 col-form-label col-form-label-lg">Prix</label>
                                 <div class="col-12 col-lg-10">
-                                    <input name="discprice" id="discprice" class="form-control form-control-lg" type="text">
+                                    <input name="discprice" id="discprice" class="form-control form-control-lg" type="text" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <label for="discpicture" class="d-inline-block col-12 col-lg-2 col-form-label col-form-label-lg">Jaquette</label>
                                 <div class="col-12 col-lg-10">
-                                    <input type="file" name="discpicture" id="discpicture" class="form-control form-control-lg" type="text">
+                                    <input type="file" name="filepicture" id="discpicture" class="form-control form-control-lg" type="text" required>
+                                    <input type="hidden" name="discpicture" ?>
                                 </div>
                             </div>
                         </form>
